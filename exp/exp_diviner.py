@@ -111,17 +111,15 @@ class Exp_Diviner(Exp_Basic):
           predict_values.append(out['net_out'])
           original_values.append(out['label'].detach().cpu().numpy())
 
-      MSE = tools.get_average(MSE_records)
-      MAE = tools.get_average(MAE_records)
       self.model.train()
       print('{}-{} dataset experimental results'.format(self.args.data, self.args.predict_length))
-      print('MSE:{}, MAE:{}'.format(MSE, MAE))
+
 
     # 예측된 값과 원래 값 저장
       np.save('predict_values.npy', predict_values)
       np.save('original_values.npy', original_values)
 
-      return MSE, MAE
+      return 
 
 
 
