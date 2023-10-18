@@ -93,35 +93,35 @@ class Exp_Diviner(Exp_Basic):
         self.model.train()
         return valid_loss
 
-def test(self, settings):
-    self.model.eval()
-    test_dataset, test_loader = self._get_data(mode = 'test')
-    print('testing...')
-    MSE_records, MAE_records = [], []
-    predict_values = []
-    original_values = []
+    def test(self, settings):
+      self.model.eval()
+      test_dataset, test_loader = self._get_data(mode = 'test')
+      print('testing...')
+      MSE_records, MAE_records = [], []
+      predict_values = []
+      original_values = []
 
-    for X, y in test_loader:
-        with torch.no_grad():
-            out = self._process_one_batch(X, y, loss_flag='mse', dynamic_loss_flag=False, flatten=True, predict_length=self.args.predict_length)
-        out['net_out'] = out['net_out'].detach().cpu().numpy()
-        if not self.args.out_scale:
-            out['net_out'] = test_dataset.inverse_label_transform(out['net_out'])
-        MSE_records.append(out['loss'])
-        predict_values.append(out['net_out'])
-        original_values.append(out['label'].detach().cpu().numpy())
+      for X, y in test_loader:
+          with torch.no_grad():
+              out = self._process_one_batch(X, y, loss_flag='mse', dynamic_loss_flag=False, flatten=True, predict_length=self.args.predict_length)
+          out['net_out'] = out['net_out'].detach().cpu().numpy()
+          if not self.args.out_scale:
+              out['net_out'] = test_dataset.inverse_label_transform(out['net_out'])
+          MSE_records.append(out['loss'])
+          predict_values.append(out['net_out'])
+          original_values.append(out['label'].detach().cpu().numpy())
 
-    MSE = tools.get_average(MSE_records)
-    MAE = tools.get_average(MAE_records)
-    self.model.train()
-    print('{}-{} dataset experimental results'.format(self.args.data, self.args.predict_length))
-    print('MSE:{}, MAE:{}'.format(MSE, MAE))
+      MSE = tools.get_average(MSE_records)
+      MAE = tools.get_average(MAE_records)
+      self.model.train()
+      print('{}-{} dataset experimental results'.format(self.args.data, self.args.predict_length))
+      print('MSE:{}, MAE:{}'.format(MSE, MAE))
 
     # 예측된 값과 원래 값 저장
-    np.save('predict_values.npy', predict_values)
-    np.save('original_values.npy', original_values)
+      np.save('predict_values.npy', predict_values)
+      np.save('original_values.npy', original_values)
 
-    return MSE, MAE
+      return MSE, MAE
 
 
 
