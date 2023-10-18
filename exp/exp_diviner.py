@@ -121,7 +121,7 @@ def test(self, settings):
     np.save('predict_values.npy', predict_values)
     np.save('original_values.npy', original_values)
 
-    return MSE, MAE, predict_values, original_values
+    return MSE, MAE
 
 
 
