@@ -100,37 +100,37 @@ class Exp_Diviner(Exp_Basic):
       MSE_records, MAE_records = [], []
       predict_values = []
       original_values = []
-
-      for X, y in test_loader:
+      for i in range(len(test_loader)):
+        for X, y in test_loader:
           with torch.no_grad():
               mse_res = self._process_one_batch(X, y, loss_flag='mse', dynamic_loss_flag=False, flatten=True, predict_length=self.args.predict_length)
               mae_res = self._process_one_batch(X, y, loss_flag='mae', dynamic_loss_flag=False, flatten=True, predict_length=self.args.predict_length)
 
-      mse_res['net_out'] = mse_res['net_out'].detach().cpu().numpy()
-      mae_res['net_out'] = mae_res['net_out'].detach().cpu().numpy()
+        mse_res['net_out'] = mse_res['net_out'].detach().cpu().numpy()
+        mae_res['net_out'] = mae_res['net_out'].detach().cpu().numpy()
 
-      if not self.args.out_scale:
-          mse_res['net_out'] = test_dataset.inverse_label_transform(mse_res['net_out'])
-          mae_res['net_out'] = test_dataset.inverse_label_transform(mae_res['net_out'])
+        if not self.args.out_scale:
+            mse_res['net_out'] = test_dataset.inverse_label_transform(mse_res['net_out'])
+            mae_res['net_out'] = test_dataset.inverse_label_transform(mae_res['net_out'])
 
-      MSE_records.append(mse_res['loss'])
-      MAE_records.append(mae_res['loss'])
+        MSE_records.append(mse_res['loss'])
+        MAE_records.append(mae_res['loss'])
 
-      predict_values.append(mse_res['net_out'])
-      original_values.append(mse_res['label'].detach().cpu().numpy())
+        predict_values.append(mse_res['net_out'])
+        original_values.append(mse_res['label'].detach().cpu().numpy())
 
-      self.model.train()
-      print('{}-{} dataset experimental results'.format(self.args.data, self.args.predict_length))
+        self.model.train()
+        print('{}-{} dataset experimental results'.format(self.args.data, self.args.predict_length))
 
-    # 예측된 값과 원래 값 저장
-      np.save('predict_values.npy', predict_values)
-      np.save('original_values.npy', original_values)
+      # 예측된 값과 원래 값 저장
+        np.save('predict_values.npy', predict_values)
+        np.save('original_values.npy', original_values)
 
-      MSE = tools.get_average(MSE_records)
-      MAE = tools.get_average(MAE_records)
-      print('MSE:{}, MAE:{}'.format(MSE, MAE))
+        MSE = tools.get_average(MSE_records)
+        MAE = tools.get_average(MAE_records)
+        print('MSE:{}, MAE:{}'.format(MSE, MAE))
         
-      return MSE, MAE
+        return MSE, MAE
 
 
 
