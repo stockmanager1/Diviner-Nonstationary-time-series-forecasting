@@ -112,12 +112,14 @@ class Exp_Diviner(Exp_Basic):
         if not self.args.out_scale:
             mse_res['net_out'] = test_dataset.inverse_label_transform(mse_res['net_out'])
             mae_res['net_out'] = test_dataset.inverse_label_transform(mae_res['net_out'])
+            predict_values.append(mse_res['net_out'])
+            original_values.append(mse_res['label'].detach().cpu().numpy())
 
         MSE_records.append(mse_res['loss'])
         MAE_records.append(mae_res['loss'])
 
-        predict_values.append(mse_res['net_out'])
-        original_values.append(mse_res['label'].detach().cpu().numpy())
+        # predict_values.append(mse_res['net_out'])
+        # original_values.append(mse_res['label'].detach().cpu().numpy())
 
         self.model.train()
         print('{}-{} dataset experimental results'.format(self.args.data, self.args.predict_length))
