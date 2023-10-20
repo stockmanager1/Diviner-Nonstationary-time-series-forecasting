@@ -4,7 +4,7 @@
 원본(https://github.com/CapricornGuang/Diviner-Nonstationary-time-series-forecasting)
 
 ## 모델 수정
-사이버 보안 경진대회에 참가하기 위해서 모델을 변경했습니다.
+사이버 보안 경진대회에 참가하기 위해서 일부 코드를 변경했습니다.
 
 ## Requirements
 
