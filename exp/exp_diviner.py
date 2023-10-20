@@ -117,8 +117,6 @@ class Exp_Diviner(Exp_Basic):
 
         MSE_records.append(mse_res['loss'])
         MAE_records.append(mae_res['loss'])
-        mse_res['net_out'] = test_dataset.inverse_label_transform(mse_res['net_out'])
-        mae_res['net_out'] = test_dataset.inverse_label_transform(mae_res['net_out'])
 
         predict_values.append(mse_res['net_out'])
         original_values.append(mse_res['label'].detach().cpu().numpy())
