@@ -1,7 +1,10 @@
 # Long term 5G network traffic forecasting via modeling non-stationarity with deep learning
 
-# 원본 링크
+## 원본 링크
 원본(https://github.com/CapricornGuang/Diviner-Nonstationary-time-series-forecasting)
+
+## 모델 수정
+사이버 보안 경진대회에 참가하기 위해서 모델을 변경했습니다.
 
 ## Requirements
 
