@@ -5,6 +5,9 @@
 
 ## 모델 수정
 사이버 보안 경진대회에 참가하기 위해서 일부 코드를 변경했습니다.
+(모델의 한글 설명)[https://velog.io/@stockmanager1/Long-term-5G-network-traffic-forecasting-viamodeling-non-stationarity-with-deep-learning]
+
+p.s 강 모델 설명할때 테블릿으로 마지막으로 한번 더 정리해보고 그걸 올려야겠다. 손으로 못쓰니까 너무 불편하네 ㅠㅠㅠ
 
 ## Requirements
 
