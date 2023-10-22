@@ -8,6 +8,7 @@
 
 [모델의 한글 설명](https://velog.io/@stockmanager1/Long-term-5G-network-traffic-forecasting-viamodeling-non-stationarity-with-deep-learning)
 
+[p.s A트랙으로 진행한 페이로드 분석 분류 모델도 첨부했습니다.](https://github.com/stockmanager1/Diviner-Nonstationary-time-series-forecasting/blob/main/%EC%82%AC%EC%9D%B4%EB%B2%84_%EC%95%88%EB%B3%B4_%EC%B5%9C%EC%A2%85%EB%B3%B8.ipynb)
 
 p.s 강 모델 설명할때 테블릿으로 마지막으로 한번 더 정리해보고 그걸 올려야겠다. 손으로 못쓰니까 너무 불편하네 ㅠㅠㅠ
 
