@@ -42,7 +42,7 @@ class DatasetETT(DatasetBasic):
             border1, border2= self.border1s[self.mode_index], self.border2s[self.mode_index]
             border1_train, border2_train = self.border1s[0], self.border2s[0]
         elif self.mode_index == 2:
-            border1, border2= self.border1s[0], self.border2s[len(df_raw)]
+            border1, border2= 0, len(df_raw)
             border1_train, border2_train = 0, len(df_raw)
 
         #Get data_input
